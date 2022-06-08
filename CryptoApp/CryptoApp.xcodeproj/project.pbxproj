@@ -14,6 +14,8 @@
 		B128A36E28508D6300CF9F19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B128A36D28508D6300CF9F19 /* Assets.xcassets */; };
 		B128A37128508D6300CF9F19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B128A36F28508D6300CF9F19 /* LaunchScreen.storyboard */; };
 		B128A37928508FFB00CF9F19 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B128A37828508FFB00CF9F19 /* APICaller.swift */; };
+		B128A37B285093E900CF9F19 /* CryptoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B128A37A285093E900CF9F19 /* CryptoTableViewCell.swift */; };
+		B128A37D28509AAE00CF9F19 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B128A37C28509AAE00CF9F19 /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		B128A37028508D6300CF9F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B128A37228508D6300CF9F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B128A37828508FFB00CF9F19 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		B128A37A285093E900CF9F19 /* CryptoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewCell.swift; sourceTree = "<group>"; };
+		B128A37C28509AAE00CF9F19 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				B128A36F28508D6300CF9F19 /* LaunchScreen.storyboard */,
 				B128A37228508D6300CF9F19 /* Info.plist */,
 				B128A37828508FFB00CF9F19 /* APICaller.swift */,
+				B128A37A285093E900CF9F19 /* CryptoTableViewCell.swift */,
+				B128A37C28509AAE00CF9F19 /* Models.swift */,
 			);
 			path = CryptoApp;
 			sourceTree = "<group>";
@@ -144,6 +150,8 @@
 				B128A36928508D6100CF9F19 /* ViewController.swift in Sources */,
 				B128A36528508D6100CF9F19 /* AppDelegate.swift in Sources */,
 				B128A36728508D6100CF9F19 /* SceneDelegate.swift in Sources */,
+				B128A37D28509AAE00CF9F19 /* Models.swift in Sources */,
+				B128A37B285093E900CF9F19 /* CryptoTableViewCell.swift in Sources */,
 				B128A37928508FFB00CF9F19 /* APICaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
