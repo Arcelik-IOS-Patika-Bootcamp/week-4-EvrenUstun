@@ -11,6 +11,7 @@ struct CryptoTableViewCellViewModel {
     let name: String
     let symbol: String
     let price: String
+    let iconUrl: URL?
 }
 
 class CryptoTableViewCell: UITableViewCell {
@@ -38,12 +39,27 @@ class CryptoTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        iconImageView.image = nil
+        nameLabel.text = nil
+        symbolLabel.text = nil
+        priceLabel.text = nil
+    }
+    
     // Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(nameLabel)
         contentView.addSubview(symbolLabel)
         contentView.addSubview(priceLabel)
+        contentView.addSubview(iconImageView)
     }
     
     required init?(coder: NSCoder) {
@@ -54,19 +70,28 @@ class CryptoTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        let size: CGFloat = contentView.frame.size.height/1.1
+        
+        iconImageView.frame = CGRect(
+            x: 20,
+            y: (contentView.frame.size.height-size)/2,
+            width: size,
+            height: size
+        )
+        
         nameLabel.sizeToFit()
         priceLabel.sizeToFit()
         symbolLabel.sizeToFit()
         
         nameLabel.frame = CGRect(
-            x: 25,
+            x: 30 + size,
             y: 0,
             width: contentView.frame.size.width/2,
             height: contentView.frame.size.height/2
         )
         
         symbolLabel.frame = CGRect(
-            x: 25,
+            x: 30 + size,
             y: contentView.frame.size.height/2,
             width: contentView.frame.size.width/2,
             height: contentView.frame.size.height/2
@@ -85,6 +110,7 @@ class CryptoTableViewCell: UITableViewCell {
         nameLabel.text = viewModel.name
         symbolLabel.text = viewModel.symbol
         priceLabel.text = viewModel.price
+        iconImageView.load(url: (viewModel.iconUrl ?? URL(string: "https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/BUSD.png"))!)
     }
     
 }

@@ -10,13 +10,13 @@ import Foundation
 struct Crypto: Decodable {
     let assetId: String
     let name: String?
-    let priceUsd: Float?
-    let idIcon: String?
+    let price: String?
+    let iconUrl: String?
     
     enum CodingKeys: String, CodingKey {
-        case assetId = "asset_id"
+        case assetId = "id"
         case name
-        case priceUsd = "price_usd"
-        case idIcon = "id_icon"
+        case price
+        case iconUrl = "logo_url"
     }
 }

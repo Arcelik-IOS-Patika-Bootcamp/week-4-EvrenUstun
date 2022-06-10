@@ -7,11 +7,7 @@
 
 import UIKit
 
-// API Caller
-// UI to show cryptos
-// MVVM
-
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController {
     
     private let tableView : UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -23,21 +19,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private var viewModels = [CryptoTableViewCellViewModel]()
     
-    static let numberFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.locale = .current
-        formatter.allowsFloats = true
-        formatter.numberStyle = .currency
-        formatter.formatterBehavior = .default
-        
-        return formatter
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        title = "Crypto Tracker"
+        title = "Crypto App"
         
         view.addSubview(tableView)
         tableView.dataSource = self
@@ -47,15 +33,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             switch result{
             case .success(let models):
                 self?.viewModels = models.compactMap({
-                    // NumberFormatter
-                    let price = $0.priceUsd ?? 0
-                    let formatter = ViewController.numberFormatter
-                    let priceString = formatter.string(from: NSNumber(value: price))
                     
                     return CryptoTableViewCellViewModel(
                         name: $0.name ?? "N/A",
                         symbol: $0.assetId,
-                        price: priceString ?? "N/A"
+                        price: $0.price ?? "N/A",
+                        iconUrl: URL(string: $0.iconUrl ?? "")
                     )
                 })
                 
@@ -73,7 +56,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.frame = view.bounds
     }
     
-    // MARK: - Tableview func
+}
+
+// MARK: - Tableview
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count
@@ -90,8 +77,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70 
+        return 70
     }
-    
 }
 
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
