@@ -81,6 +81,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// extension for UIImageView load image from URl.
 extension UIImageView {
     func load(url: URL) {
         DispatchQueue.global().async { [weak self] in
