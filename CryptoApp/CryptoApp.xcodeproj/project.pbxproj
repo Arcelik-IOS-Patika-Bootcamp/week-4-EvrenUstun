@@ -62,7 +62,6 @@
 				6E5D1B327D47926E95A9D15E /* Pods-CryptoApp.debug.xcconfig */,
 				7F22E49A4056AC215FFE3633 /* Pods-CryptoApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

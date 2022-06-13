@@ -22,13 +22,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        setupUI()
+        fetchData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
+    }
+    
+    private func setupUI() {
         title = "Crypto App"
-        
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-        
+    }
+    
+    private func fetchData() {
         APICaller.shared.getAllCryptoData { [weak self] result in
             switch result{
             case .success(let models):
@@ -49,11 +59,6 @@ class ViewController: UIViewController {
                 print("Error: \(error)")
             }
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
     }
     
 }
