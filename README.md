@@ -12,7 +12,7 @@ Derste işlediğimiz diğer yapıları kullanmak opsiyonel/
 Herhangi bir api yi kullanmak serbest
 
 ## API
-https://p.nomics.com/cryptocurrency-bitcoin-api
+https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc
 
 ## App Screenshot
 <img src="https://user-images.githubusercontent.com/56193045/173441663-3fa05f75-6b58-42e2-898a-52809a9c990e.png" width="400" height="800" />
