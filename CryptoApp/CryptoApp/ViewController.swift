@@ -47,7 +47,7 @@ class ViewController: UIViewController {
                     return CryptoTableViewCellViewModel(
                         name: $0.name ?? "N/A",
                         symbol: $0.assetId,
-                        price: $0.price ?? "N/A",
+                        price:  $0.price ?? 0,
                         iconUrl: URL(string: $0.iconUrl ?? "")
                     )
                 })

@@ -11,7 +11,7 @@ import Kingfisher
 struct CryptoTableViewCellViewModel {
     let name: String
     let symbol: String
-    let price: String
+    let price: Double
     let iconUrl: URL?
 }
 
@@ -110,8 +110,12 @@ class CryptoTableViewCell: UITableViewCell {
     func configure(with viewModel: CryptoTableViewCellViewModel){
         nameLabel.text = viewModel.name
         symbolLabel.text = viewModel.symbol
-        priceLabel.text = viewModel.price
+        priceLabel.text = getFormatPrice(viewModel.price)
         iconImageView.kf.setImage(with: viewModel.iconUrl, placeholder: nil, options: nil, completionHandler: nil)
     }
     
+    // Format the price data.
+    func getFormatPrice(_ price: Double) -> String {
+        return String(format: "%.4f", price)
+    }
 }

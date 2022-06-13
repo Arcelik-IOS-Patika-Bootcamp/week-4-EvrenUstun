@@ -12,8 +12,7 @@ final class APICaller{
     
     // Constants for api
     private struct Constants {
-        static let apiKey = "fa0650d9bde2a272ae3bfa1b51e24a1d14319bb3"
-        static let assetsEnpoint = "https://api.nomics.com/v1"
+        static let assetsEnpoint = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc"
     }
     
     private init () {}
@@ -24,7 +23,7 @@ final class APICaller{
     public func getAllCryptoData(
         completion: @escaping (Result<[Crypto], Error>) -> Void
     ) {
-        guard let url = URL(string: Constants.assetsEnpoint + "/currencies/ticker?key=" + Constants.apiKey) else{
+        guard let url = URL(string: Constants.assetsEnpoint) else{
             return
         }
         
