@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 struct CryptoTableViewCellViewModel {
     let name: String
@@ -110,7 +111,7 @@ class CryptoTableViewCell: UITableViewCell {
         nameLabel.text = viewModel.name
         symbolLabel.text = viewModel.symbol
         priceLabel.text = viewModel.price
-        iconImageView.load(url: (viewModel.iconUrl ?? URL(string: "https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/BUSD.png"))!)
+        iconImageView.kf.setImage(with: viewModel.iconUrl, placeholder: nil, options: nil, completionHandler: nil)
     }
     
 }
